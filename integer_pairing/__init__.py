@@ -1,4 +1,4 @@
-__version__ = '0.1.0'
+__version__ = '0.6.0'
 
-import integer_pairing._cantor as cantor 
-import integer_pairing._szudik as szudik
+from . import _cantor as cantor 
+from . import _szudzik as szudzik
