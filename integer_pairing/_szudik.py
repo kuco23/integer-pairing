@@ -1,6 +1,6 @@
 from math import isqrt
 from functools import partial 
-from _interface import abstractPair, abstractUnpair
+from ._interface import abstractPair, abstractUnpair
 
 def _pair(m, n):
     return n*n+m if n > m else m*m+m*n

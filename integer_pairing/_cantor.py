@@ -1,6 +1,6 @@
 from math import isqrt
 from functools import partial
-from _interface import abstractPair, abstractUnpair
+from ._interface import abstractPair, abstractUnpair
 
 def _pair(m, n):
     return (m + n) * (m + n + 1) // 2 + n
