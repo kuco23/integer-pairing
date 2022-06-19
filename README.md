@@ -1,7 +1,7 @@
 # integer-pairing
 
 This library enables encodings of integer tuples as one integer. It implements two types of encodings - Cantor and Szudzik.
-There is a (great article)[https://www.vertexfragment.com/ramblings/cantor-szudzik-pairing-functions/] on those two types.
+There is a [great article](https://www.vertexfragment.com/ramblings/cantor-szudzik-pairing-functions/) on those two types.
 
 ## Usage
 The base example is
