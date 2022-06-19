@@ -14,10 +14,10 @@ cantor.unpair(313) # (11, 13)
 szudzik.pair(11, 13) # 180
 szudzik.unpair(180) # (11, 13)
 ```
-You can pair tuples of any size, but have to give the size when unpairing
+You can pair tuples of any size, but have to specify the size when unpairing
 ```python
 cantor.pair(11, 13, 17, 19, 23) # 1115111727200556569
-cantor.unpair(1251, dim=5) # (11, 13, 17, 19, 23)
+cantor.unpair(1115111727200556569, dim=5) # (11, 13, 17, 19, 23)
 ```
 It is also possible to include negative numbers, but you need to imply that when decoding
 ```python 

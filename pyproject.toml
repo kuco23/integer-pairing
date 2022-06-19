@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "integer-pairing"
-version = "0.6.0"
+version = "0.8.0"
 description = ""
 authors = ["Nejc Ševerkar <nseverkar@gmail.com>"]
 repository = "https://github.com/kuco23/integer-pairing/"
 license = "MIT"
 readme = "README.md"
-keywords = ["test", "dependencies", "documentation"]
+keywords = ["Pairing Functions"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
