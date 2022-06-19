@@ -14,12 +14,12 @@ cantor.unpair(313) # (11, 13)
 szudzik.pair(11, 13) # 180
 szudzik.unpair(180) # (11, 13)
 ```
-You pair tuples of any size, but have to imply the size when unpairing
+You can pair tuples of any size, but have to give the size when unpairing
 ```python
 cantor.pair(11, 13, 17, 19, 23) # 1115111727200556569
 cantor.unpair(1251, dim=5) # (11, 13, 17, 19, 23)
 ```
-You can also include negative numbers, but need to imply that when decoding
+It is also possible to include negative numbers, but you need to imply that when decoding
 ```python 
 cantor.pair(11, 13, -1) # 726618
 cantor.unpair(726618, dim=3, neg=True) # (11, 13, -1)
@@ -38,17 +38,11 @@ cantor.unpair(960790065254702046274404114853633027146937669672812473623832)
 ## Complexity
 The pairing of n integers will result in an integer of the size of about their product.
 
-## Examples of usage
-
-### Pairing of real numbers
-You can represent any computationally-realistic real number with a fraction, 
-which is a pair of integers and can be encoded as one integer.
-
-### Cryptographic salting
+## Example usage from Cryptography
 When encrypting messages deterministically, an attacker can always reproduce the encryption 
 of any chosen messages. If those possibilities are few (like `0` / `1`), those kinds 
 of algorithms are pretty useless. This is solved by appending a random number, called salt, 
-to the message. Here it can be useful to implement this appending via pairing, as
+to the message. It can be useful to implement this appending via pairing.
 ```python
 from random import getrandbites
 from pairing import szudzik
