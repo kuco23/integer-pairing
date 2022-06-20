@@ -24,7 +24,12 @@ class Pairing(ABC):
         return False
 
     def pair(self, *args):
-        assert args, "you have to pair something"
+        """Encodes a list of integers into one non-negative integer.
+
+        Returns:
+            int: args encoded into an integer
+        """
+        assert args
         assert all(isinstance(x, int) for x in args)
 
         if self._containsNegatives(args):
@@ -33,6 +38,16 @@ class Pairing(ABC):
         return reduce(self._pair, args) if len(args) > 1 else args[0]
 
     def unpair(self, n, dim=2, neg=False):
+        """Unpairs any number n into an appropriate tuple.
+
+        Args:
+            n (int): encoding of the paired tuple
+            dim (int): size of the paired tuple encoded by n. Defaults to 2.
+            neg (bool): implies the presence of negative values. Defaults to False.
+
+        Returns:
+            Tuple[int]: encoding n decoded into a dim-length integer tuple
+        """
         assert isinstance(n, int)
         assert isinstance(dim, int)
         assert isinstance(neg, bool)
@@ -55,12 +70,26 @@ class Bundle(ABC):
         self._unbundle = unbundle_fun
 
     def pair(self, *args):
-        assert args, "you have to pair something"
+        """Encodes any number of integers into one integer, 
+        along with the information about negative integers and 
+        the number of encoded integers.
+
+        Returns:
+            _type_: _description_
+        """
+        assert args
         assert all(isinstance(x, int) for x in args)
         return self._bundle(args)
 
-    def unpair(self, n, neg=False):
+    def unpair(self, n):
+        """Decodes n if n was a result of bundling an integer tuple.
+
+        Args:
+            n (int): non-negative integer obtained via bundle.pair
+
+        Returns:
+            Tuple[int]: encoding n decoded into an integer tuple
+        """
         assert isinstance(n, int)
-        assert isinstance(neg, bool)
         assert n >= 0
         return self._unbundle(n)

@@ -88,4 +88,4 @@ message_enc = txt2int(message)
 message_dec = int2txt(message_enc)
 # 'hi there!'
 ```
-but there are better ways of doing this.
+But there are better ways of doing this.

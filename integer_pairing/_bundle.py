@@ -48,4 +48,5 @@ def _unbundle(n):
         i = j
     return tuple(l)
 
+
 bundle = Bundle(_bundle, _unbundle)
