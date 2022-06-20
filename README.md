@@ -54,9 +54,9 @@ bundle.unpair(0)
 Traceback (most recent call last):
   File "<pyshell#37>", line 1, in <module>
     bundle.unpair(0)
-  File "C:\Users\kuco\integer-pairing\integer_pairing\_interface.py", line 66, in unpair
+  File "...\integer_pairing\_interface.py", line 66, in unpair
     return self._unbundle(n)
-  File "C:\Users\kuco\integer-pairing\integer_pairing\_bundle.py", line 41, in _unbundle
+  File "...\integer_pairing\_bundle.py", line 41, in _unbundle
     di = 1 if s[i+1] != '2' else 2
 IndexError: string index out of range
 ```
