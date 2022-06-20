@@ -34,9 +34,9 @@ cantor.pair(655482261805334959278882253227, 730728447469919519177553911051)
 cantor.unpair(960790065254702046274404114853633027146937669672812473623832)
 # (655482261805334959278882253227, 730728447469919519177553911051)
 ```
-You can also pair things in a way that encodes the tuple's dimension and its signs. 
-This is called bundleing and is done by encoding each number in a tuple in binary, 
-then prepending those encodings by the number 2 or 22, depending on its sign.
+You can also pair (signed) integers in a way that encodes the tuple's dimension. 
+This is called bundling and is done by encoding each number in a tuple in binary, 
+then prepending those encodings by the number 2 or 22, depending on the number's sign.
 For space-efficiency, the string is then interpreted in a trinary base system.
 ```python
 from integer_pairing import bundle
@@ -46,8 +46,8 @@ bundle.pair(*range(-8,8))
 bundle.unpair(1061264631713144962268472871675)
 # (-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
 ```
-The downside here is that `bundle.pair` is not surjective, so not every number can be unpaired. 
-Calling unpair on those will produce an exception
+The downside is that `bundle.pair` is not surjective, so not every number can be unpaired. 
+Thus calling unpair on an invalid number will produce an exception
 ```python
 bundle.unpair(0)
               
@@ -66,13 +66,26 @@ The pairing of n integers will result in an integer of the size of about their p
 
 ## Example usage from Cryptography
 When encrypting messages deterministically, an attacker can always reproduce the encryption 
-of any chosen messages. If those possibilities are few (like `0` / `1`), those kinds 
+of any chosen messages. If the possibilities are few (e.g. `true` or `false`), those kinds 
 of algorithms are pretty useless. This is solved by appending a random number, called salt, 
 to the message. It can be useful to implement this appending via pairing.
 ```python
-from random import getrandbites
+from random import getrandbits
 
-salt = getrandbites(200)
+salt = getrandbits(128)
 message = 0
 encoded = szudzik.pair(message, salt)
 ```
+Also public-key cryptography can often only deal with integers, so messages have to be encoded
+accordingly. You can easily acomplish this with bundling.
+```python
+txt2int = lambda m: bundle.pair(*map(ord, m))
+int2txt = lambda n: ''.join(map(chr, bundle.unpair(n)))
+
+message = 'hi there!'
+message_enc = txt2int(message)
+# 2050221782650890524283503336306989
+message_dec = int2txt(message_enc)
+# 'hi there!'
+```
+but there are better ways of doing this.
