@@ -1,7 +1,7 @@
 # integer-pairing
 
-This library enables encodings of integer tuples as one integer. It implements two types of encodings - Cantor and Szudzik.
-There is a [great article](https://www.vertexfragment.com/ramblings/cantor-szudzik-pairing-functions/) on those two types.
+This library enables encodings of integer tuples as one integer. It implements two well-known types of encodings - Cantor and Szudzik.
+There is a [great article](https://www.vertexfragment.com/ramblings/cantor-szudzik-pairing-functions/) on those two types. It also implements a slight generalization.
 
 ## Usage
 The base example is
@@ -24,7 +24,7 @@ It is also possible to include negative numbers, but you need to imply that when
 cantor.pair(11, 13, -1) # 726618
 cantor.unpair(726618, dim=3, neg=True) # (11, 13, -1)
 ```
-Naive implementations of the above algorithms, fail to account for very large
+Naive implementations of the above algorithms fail to account for very large
 integers, as they use numeric calculation of the square root. Python allows for 
 integers of any size to be stored, but converts them to float (64 bits) when doing numeric operations, 
 so this approximation ruins the unpairing. Luckily this can be (efficiently) solved and is implemented here.
@@ -76,7 +76,7 @@ salt = getrandbits(128)
 message = 0
 encoded = szudzik.pair(message, salt)
 ```
-Also public-key cryptography can often only deal with integers, so messages have to be encoded
+Also, public-key cryptography can often only deal with integers, so messages have to be encoded
 accordingly. You can easily acomplish this with bundling.
 ```python
 txt2int = lambda m: bundle.pair(*map(ord, m))
