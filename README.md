@@ -65,10 +65,10 @@ IndexError: string index out of range
 The pairing of n integers will result in an integer of the size of about their product.
 
 ## Example usage from Cryptography
-When encrypting messages deterministically, an attacker can always reproduce the encryption 
-of any chosen messages. If the possibilities are few (e.g. `true` or `false`), those kinds 
-of algorithms are pretty useless. This is solved by appending a random number, called salt, 
-to the message. It can be useful to implement this appending via pairing.
+When encrypting messages deterministically, an attacker can sometimes reproduce the encryption 
+of a chosen messages. If the possibilities are few (e.g. `true` or `false`), those kinds 
+of cryptosystems are useless. This is solved by padding a message with a random number. 
+It can be useful to implement this padding via pairing.
 ```python
 from random import getrandbits
 
